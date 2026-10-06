@@ -7,7 +7,7 @@ users:[{id:1,name:'Maya Shah',email:'maya@acme.com',pass:p,role:'Manager',compan
 {id:4,name:'Ben Roy',email:'ben@acme.com',pass:p,role:'Team Member',company:a,ok:1},
 {id:5,name:'Noah Lee',email:'noah@nova.com',pass:p,role:'Manager',company:'Nova Labs',ok:1}],
 projects:[{id:1,name:'Company Website',co:a,lead:2,mem:[{u:3,duty:'HTML and CSS pages'},{u:4,duty:'JavaScript features'}]}],
-tasks:[{id:1,p:1,u:3,t:'Create homepage',s:'done'},{id:2,p:1,u:3,t:'Create contact us page',s:'sub',link:'https://github.com/example/contact-page'},{id:3,p:1,u:3,t:'Create about page',s:'todo'},{id:4,p:1,u:4,t:'Add form validation',s:'done'},{id:5,p:1,u:4,t:'Build image slider',s:'pend'}]}}
+tasks:[{id:1,p:1,u:3,t:'Create homepage',s:'done',link:'https://github.com/example/homepage'},{id:2,p:1,u:3,t:'Create contact us page',s:'sub',link:'https://github.com/example/contact-page'},{id:3,p:1,u:3,t:'Create about page',s:'todo'},{id:4,p:1,u:4,t:'Add form validation',s:'done',link:'https://github.com/example/form-validation'},{id:5,p:1,u:4,t:'Build image slider',s:'pend'}]}}
 let D;try{D=JSON.parse(sessionStorage.getItem(K))}catch(e){}D=D||seed();
 const S={u:+sessionStorage.getItem('karyam_u')||null,v:'dash',m:'in',p:0,x:0};
 const save=()=>{try{sessionStorage.setItem(K,JSON.stringify(D))}catch(e){}app()};
@@ -60,7 +60,7 @@ return `<button class="btn g s" style="margin-top:16px" onclick="go('proj')">Bac
 <div class="card" style="margin-top:14px"><div class="av">${E(x.name[0])}</div><h2 style="margin:0">${E(x.name)}</h2><p class="mut">${x.role} on ${E(p.name)}</p><p>Duty: ${E(m.duty)}</p>${bar(pct(ts))}</div><h3 style="margin:18px 0 10px">Assigned tasks</h3>`+
 (ts.map(t=>{const late=t.due&&t.s!='done'&&t.due<new Date().toISOString().slice(0,10);return `<div class="card row"><div><b>${E(t.t)}</b><em class="chip ${t.s}">${L[t.s]}</em>
 ${t.due?`<p class="mut${late?' late':''}">Due ${E(t.due)}${late?' (overdue)':''}</p>`:''}
-${t.link?`<p class="mut">Submitted work: <a href="${E(t.link)}" target="_blank" rel="noopener">${E(t.link)}</a></p>`:''}
+${t.link?`<p class="mut">${t.s=='done'?'Completed work':'Submitted work'}: <a href="${E(t.link)}" target="_blank" rel="noopener">${E(t.link)}</a></p>`:t.s=='done'?'<p class="mut">No work link was added.</p>':''}
 ${t.note&&t.s=='pend'?`<p class="mut late">Pending reason: ${E(t.note)}</p>`:''}</div><span class="row">
 ${u.id==t.u&&(t.s=='todo'||t.s=='pend')?`<input id="l${t.id}" type="url" placeholder="GitHub or work link" value="${E(t.link||'')}" style="min-width:220px"><button class="btn s" onclick="sub(${t.id})">Submit for verification</button>`:''}
 ${ld&&t.s=='sub'?`<button class="btn ok s" onclick="st(${t.id},'done')">Verify and complete</button>`:''}

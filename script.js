@@ -44,7 +44,7 @@ function dash(){const u=me(),mg=u.role=='Manager',ld=u.role=='Team Leader',
 ps=D.projects.filter(p=>mg?p.co==u.company:ld?p.lead==u.id:p.mem.some(m=>m.u==u.id));let h='';
 if(mg){const rq=D.users.filter(x=>x.company==u.company&&!x.ok);
 h+=`<h2>Join requests</h2><div class="card">${rq.map(x=>`<div class="row"><span>${E(x.name)} wants to join as ${x.role}</span><span><button class="btn ok s" onclick="appr(${x.id},1)">Approve</button> <button class="btn w s" onclick="appr(${x.id},0)">Reject</button></span></div>`).join('')||'<p class="mut">No pending requests.</p>'}</div>
-<h2>Create a project</h2><div class="card row"><input id="pn" placeholder="Project name"><select id="pl">${D.users.filter(x=>x.company==u.company&&x.ok&&x.role=='Team Leader').map(x=>`<option value="${x.id}">${E(x.name)}</option>`).join('')}</select><button class="btn" onclick="newP()">Create project</button></div>`}
+<h2>Create a project</h2><div class="card row"><input id="pn" placeholder="Project name"><select id="pl"><option value="">Select Team Leader</option>${D.users.filter(x=>x.company==u.company&&x.ok&&x.role=='Team Leader').map(x=>`<option value="${x.id}">${E(x.name)}</option>`).join('')}</select><button class="btn" onclick="newP()">Create project</button></div>`}
 return h+`<h2>${mg?'Company projects':'Your projects'}</h2><div class="grid">`+(ps.map(p=>`<div class="card click" onclick="go('proj',${p.id})"><h3>${E(p.name)}</h3><p class="mut">Led by ${E(U(p.lead).name)}, ${p.mem.length} members</p>${bar(pct(T(p.id)))}</div>`).join('')||'<p class="mut">No projects yet.</p>')+'</div>'}
 
 function proj(){const u=me(),p=P(S.p),ts=T(p.id),ed=p.lead==u.id||u.role=='Manager',

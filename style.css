@@ -1,11 +1,87 @@
-:root{--bs-primary:#0f766e;--bs-primary-rgb:15,118,110;--bs-link-color:#0f766e;--bs-link-color-rgb:15,118,110;--bs-link-hover-color:#0c5f59}
-body{background:#f6f7f3;color:#14213d}
-h1,h2,h3,h4,h5,.navbar-brand,.brand{font-family:Georgia,"Times New Roman",serif}
-.btn-primary{--bs-btn-bg:#0f766e;--bs-btn-border-color:#0f766e;--bs-btn-hover-bg:#0c5f59;--bs-btn-hover-border-color:#0c5f59;--bs-btn-active-bg:#0c5f59;--bs-btn-active-border-color:#0c5f59;--bs-btn-disabled-bg:#0f766e;--bs-btn-disabled-border-color:#0f766e}
-.auth-art{background:radial-gradient(circle at 18% 8%,rgba(45,212,191,.28),transparent 45%),radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(160deg,#0b1730,#12305a 55%,#0f766e)}
-.brand{display:flex;align-items:center;gap:12px;font-size:28px;font-weight:700}
-.brand svg{width:36px;height:36px}
-.hero{width:100%;max-width:520px;height:auto}
-.avatar{width:40px;height:40px;border-radius:50%;background:#0f766e;color:#fff;display:grid;place-items:center;font-weight:700}
-.card-hover{cursor:pointer;transition:border-color .15s,transform .15s}
-.card-hover:hover{border-color:#0f766e;transform:translateY(-2px)}
+/* ===== Karyam - style.css ===== */
+
+/* ----- Colours: change Bootstrap's blue to our teal ----- */
+:root {
+    --bs-primary: #0f766e;
+    --bs-primary-rgb: 15, 118, 110;
+    --bs-link-color: #0f766e;
+    --bs-link-color-rgb: 15, 118, 110;
+    --bs-link-hover-color: #0c5f59;
+}
+
+/* ----- Page ----- */
+body {
+    background-color: #f6f7f3;
+    color: #14213d;
+}
+
+h1, h2, h3, h4, h5,
+.navbar-brand,
+.brand {
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* ----- Buttons ----- */
+.btn-primary {
+    --bs-btn-bg: #0f766e;
+    --bs-btn-border-color: #0f766e;
+    --bs-btn-hover-bg: #0c5f59;
+    --bs-btn-hover-border-color: #0c5f59;
+    --bs-btn-active-bg: #0c5f59;
+    --bs-btn-active-border-color: #0c5f59;
+    --bs-btn-disabled-bg: #0f766e;
+    --bs-btn-disabled-border-color: #0f766e;
+}
+
+/* ----- Login page ----- */
+.auth-art {
+    background:
+        radial-gradient(circle at 18% 8%, rgba(45, 212, 191, 0.28), transparent 45%),
+        radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 22px 22px,
+        linear-gradient(160deg, #0b1730, #12305a 55%, #0f766e);
+}
+
+.form-box {
+    max-width: 480px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.brand svg {
+    width: 36px;
+    height: 36px;
+}
+
+.hero {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+}
+
+/* ----- Cards and avatar ----- */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #0f766e;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+}
+
+.card-hover {
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.15s;
+}
+
+.card-hover:hover {
+    border-color: #0f766e;
+    transform: translateY(-2px);
+}

@@ -1,27 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Karyam - Project Management System</title>
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karyam - Project Management System</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Our own CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div id="app"></div>
 
-  <!-- Bootstrap modal, reused for the work link and the pending reason -->
-  <div class="modal fade" id="dlg" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
-      <div class="modal-header"><h5 class="modal-title" id="dlgTitle"></h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-      <div class="modal-body"><label class="form-label" id="dlgLabel"></label><input class="form-control" id="dlgInput"><div class="text-danger small mt-2" id="dlgErr"></div></div>
-      <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button><button type="button" class="btn btn-primary" id="dlgOk">Confirm</button></div>
-    </div></div>
-  </div>
+    <!-- ===================== LOGIN PAGE ===================== -->
+    <div id="loginPage" class="row g-0 min-vh-100">
 
-  <!-- Bootstrap 5 JavaScript (needed for modal and carousel) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
+        <!-- Left side: image and slides (hidden on small screens) -->
+        <div class="col-lg-6 d-none d-lg-flex auth-art flex-column justify-content-between p-5 text-white">
+            <div class="brand"><svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="9" fill="#2dd4bf"/><path d="M10 19l6 6 11-13" fill="none" stroke="#0b1730" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg> Karyam</div>
+
+            <div>
+                <svg class="hero" viewBox="0 0 520 370" role="img" aria-label="Karyam project board illustration" font-family="system-ui,Arial,sans-serif"><g transform="translate(0,24)"><rect x="10" y="10" width="500" height="320" rx="20" fill="#fff" fill-opacity=".08" stroke="#fff" stroke-opacity=".2"/><circle cx="34" cy="34" r="4" fill="#fff" fill-opacity=".35"/><circle cx="50" cy="34" r="4" fill="#fff" fill-opacity=".35"/><circle cx="66" cy="34" r="4" fill="#fff" fill-opacity=".35"/><text x="88" y="38" font-size="12" fill="#fff" fill-opacity=".8">Company Website</text><rect x="28" y="58" width="148" height="256" rx="12" fill="#fff" fill-opacity=".06"/><circle cx="40" cy="76" r="4" fill="#f59e0b"/><text x="50" y="80" font-size="11" fill="#fff" fill-opacity=".8">To do</text><rect x="188" y="58" width="148" height="256" rx="12" fill="#fff" fill-opacity=".06"/><circle cx="200" cy="76" r="4" fill="#38bdf8"/><text x="210" y="80" font-size="11" fill="#fff" fill-opacity=".8">In verification</text><rect x="348" y="58" width="148" height="256" rx="12" fill="#fff" fill-opacity=".06"/><circle cx="360" cy="76" r="4" fill="#22c55e"/><text x="370" y="80" font-size="11" fill="#fff" fill-opacity=".8">Completed</text><rect x="40" y="94" width="124" height="58" rx="8" fill="#fff" fill-opacity=".96"/><text x="52" y="116" font-size="11" font-weight="700" fill="#14213d">Create about page</text><text x="52" y="134" font-size="10" fill="#5f6b7a">Due 14 Oct</text><circle cx="148" cy="136" r="8" fill="#0f766e"/><rect x="40" y="164" width="124" height="58" rx="8" fill="#fff" fill-opacity=".96"/><text x="52" y="186" font-size="11" font-weight="700" fill="#14213d">Add search bar</text><text x="52" y="204" font-size="10" fill="#5f6b7a">Due 18 Oct</text><circle cx="148" cy="206" r="8" fill="#14213d"/><rect x="200" y="94" width="124" height="58" rx="8" fill="#fff" fill-opacity=".96"/><text x="212" y="116" font-size="11" font-weight="700" fill="#14213d">Contact us page</text><text x="212" y="134" font-size="10" fill="#5f6b7a">GitHub link added</text><circle cx="308" cy="136" r="8" fill="#c2410c"/><rect x="360" y="94" width="124" height="58" rx="8" fill="#fff" fill-opacity=".96"/><text x="372" y="116" font-size="11" font-weight="700" fill="#14213d">Homepage</text><text x="372" y="134" font-size="10" fill="#5f6b7a">Verified by leader</text><circle cx="468" cy="136" r="8" fill="#0f766e"/><path d="M464 136l3 3 5-6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="360" y="164" width="124" height="58" rx="8" fill="#fff" fill-opacity=".96"/><text x="372" y="186" font-size="11" font-weight="700" fill="#14213d">Navbar</text><text x="372" y="204" font-size="10" fill="#5f6b7a">Verified by leader</text><circle cx="468" cy="206" r="8" fill="#14213d"/><path d="M464 206l3 3 5-6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="360" y="234" width="124" height="58" rx="8" fill="#fff" fill-opacity=".96"/><text x="372" y="256" font-size="11" font-weight="700" fill="#14213d">Form validation</text><text x="372" y="274" font-size="10" fill="#5f6b7a">Verified by leader</text><circle cx="468" cy="276" r="8" fill="#c2410c"/><path d="M464 276l3 3 5-6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><rect x="372" y="0" width="148" height="46" rx="12" fill="#fff"/><text x="388" y="31" font-size="21" font-weight="700" fill="#0f766e">72%</text><text x="436" y="30" font-size="12" fill="#5f6b7a">complete</text></svg>
+
+                <!-- Bootstrap carousel -->
+                <div id="featureCarousel" class="carousel slide mt-4" data-bs-ride="carousel" data-bs-interval="3500">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <h2>Plan it. Assign it. Verify it.</h2>
+                            <p class="opacity-75">One workspace for every project and every task.</p>
+                        </div>
+                        <div class="carousel-item">
+                            <h2>Role based access</h2>
+                            <p class="opacity-75">Separate views for Managers, Team Leaders and Team Members.</p>
+                        </div>
+                        <div class="carousel-item">
+                            <h2>Leader verified tasks</h2>
+                            <p class="opacity-75">A task counts only after the Team Leader checks the work link.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div></div>
+        </div>
+
+        <!-- Right side: login form -->
+        <div class="col-12 col-lg-6 d-flex align-items-center bg-white">
+            <div class="form-box w-100 p-4 p-md-5 mx-auto">
+                <div class="brand text-primary d-lg-none mb-3">Karyam</div>
+                <h2>Welcome back</h2>
+                <p class="text-muted mb-4">Log in to your workspace.</p>
+
+                <label class="form-label" for="loginEmail">Email</label>
+                <input id="loginEmail" type="email" class="form-control mb-3">
+
+                <label class="form-label" for="loginPassword">Password</label>
+                <input id="loginPassword" type="password" class="form-control mb-3">
+
+                <div id="loginMessage"></div>
+
+                <button class="btn btn-primary w-100 py-2 mb-3" data-action="login">Log in</button>
+
+                <p class="text-muted small">
+                    New user? <a href="#" data-action="show-register">Register here</a>
+                </p>
+
+                <div class="alert alert-secondary small">
+                    Demo accounts (password 1234):<br>
+                    maya@acme.com (Manager)<br>
+                    liam@acme.com (Team Leader)<br>
+                    aria@acme.com (Team Member)
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ===================== REGISTER PAGE ===================== -->
+    <div id="registerPage" class="d-none d-flex align-items-center justify-content-center min-vh-100 bg-white">
+        <div class="form-box w-100 p-4 p-md-5">
+            <div class="brand text-primary mb-3">Karyam</div>
+            <h2>Create your account</h2>
+            <p class="text-muted mb-4">Managers set up their company. Everyone else joins once their manager approves.</p>
+
+            <label class="form-label" for="regName">Full name</label>
+            <input id="regName" class="form-control mb-3">
+
+            <label class="form-label" for="regRole">Role</label>
+            <select id="regRole" class="form-select mb-3">
+                <option>Team Member</option>
+                <option>Team Leader</option>
+                <option>Manager</option>
+            </select>
+
+            <label class="form-label" for="regCompany">Company</label>
+            <input id="regCompany" class="form-control mb-3" list="companyList">
+            <datalist id="companyList"></datalist>
+
+            <label class="form-label" for="regEmail">Email</label>
+            <input id="regEmail" type="email" class="form-control mb-3">
+
+            <label class="form-label" for="regPassword">Password</label>
+            <input id="regPassword" type="password" class="form-control mb-3">
+
+            <div id="registerMessage"></div>
+
+            <button class="btn btn-primary w-100 py-2 mb-3" data-action="register">Register</button>
+
+            <p class="text-muted small">
+                Already registered? <a href="#" data-action="show-login">Log in</a>
+            </p>
+        </div>
+    </div>
+
+
+    <!-- ===================== MAIN APP (after login) ===================== -->
+    <div id="appPage" class="d-none">
+
+        <!-- Top navigation bar -->
+        <nav class="navbar navbar-dark bg-dark mb-4">
+            <div class="container">
+                <span class="navbar-brand">Karyam</span>
+                <span id="navUser" class="navbar-text ms-auto me-3 text-white-50"></span>
+                <button class="btn btn-outline-light btn-sm" data-action="logout">Log out</button>
+            </div>
+        </nav>
+
+        <main class="container pb-5">
+
+            <!-- ---------- DASHBOARD SECTION ---------- -->
+            <div id="dashboardPage">
+
+                <!-- Only the Manager sees this part -->
+                <div id="managerPanel" class="row g-3 mb-4 d-none">
+                    <div class="col-lg-6">
+                        <div class="card h-100">
+                            <div class="card-header fw-semibold">Join requests</div>
+                            <ul id="requestList" class="list-group list-group-flush"></ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card h-100">
+                            <div class="card-header fw-semibold">Create a project</div>
+                            <div class="card-body">
+                                <input id="projectName" class="form-control mb-2" placeholder="Project name">
+                                <select id="leaderSelect" class="form-select mb-3"></select>
+                                <button class="btn btn-primary" data-action="create-project">Create project</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 id="dashTitle" class="mb-3">Your projects</h3>
+                <div id="projectList" class="row g-3"></div>
+                <div id="noProjects" class="alert alert-info d-none">No projects yet.</div>
+            </div>
+
+
+            <!-- ---------- PROJECT SECTION ---------- -->
+            <div id="projectPage" class="d-none">
+
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" data-action="home">Projects</a></li>
+                        <li id="projectCrumb" class="breadcrumb-item active"></li>
+                    </ol>
+                </nav>
+
+                <h2 id="projectTitle"></h2>
+                <p id="projectLeader" class="text-muted"></p>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <b>Overall project progress</b>
+                        <div id="projectBar"></div>
+                        <div id="statusSummary" class="mt-3"></div>
+                    </div>
+                </div>
+
+                <h4 class="mb-3">Team members</h4>
+                <div id="memberList" class="row g-3 mb-4"></div>
+                <div id="noMembers" class="alert alert-info d-none">No members yet.</div>
+
+                <!-- Only the Manager and the project's Team Leader see this part -->
+                <div id="leaderPanel" class="row g-3 d-none">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header fw-semibold">Add a member</div>
+                            <div class="card-body">
+                                <select id="memberSelect" class="form-select mb-2"></select>
+                                <input id="dutyInput" class="form-control mb-3" placeholder="Duty in this project">
+                                <button class="btn btn-primary" data-action="add-member">Add member</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header fw-semibold">Assign a task</div>
+                            <div class="card-body">
+                                <select id="taskMemberSelect" class="form-select mb-2"></select>
+                                <input id="taskTitle" class="form-control mb-2" placeholder="Task, for example Create homepage">
+                                <input id="taskDue" type="date" class="form-control mb-3">
+                                <button class="btn btn-primary" data-action="add-task">Assign task</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ---------- MEMBER PROFILE SECTION ---------- -->
+            <div id="profilePage" class="d-none">
+
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" data-action="home">Projects</a></li>
+                        <li class="breadcrumb-item"><a href="#" id="profileProjectCrumb" data-action="back-project"></a></li>
+                        <li id="profileCrumb" class="breadcrumb-item active"></li>
+                    </ol>
+                </nav>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div id="profileAvatar" class="avatar mb-2"></div>
+                        <h2 id="profileName" class="mb-0"></h2>
+                        <p id="profileRole" class="text-muted mb-1"></p>
+                        <p id="profileDuty" class="mb-0"></p>
+                        <div id="profileBar"></div>
+                    </div>
+                </div>
+
+                <h4 class="mb-3">Assigned tasks</h4>
+                <ul id="taskList" class="list-group"></ul>
+                <div id="noTasks" class="alert alert-info d-none">No tasks assigned yet.</div>
+            </div>
+
+        </main>
+    </div>
+
+
+    <!-- ===================== POP-UP BOX (Bootstrap modal) ===================== -->
+    <!-- Used for the work link and for the pending reason -->
+    <div class="modal fade" id="dialogBox" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="dialogTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label" id="dialogLabel" for="dialogInput"></label>
+                    <input class="form-control" id="dialogInput">
+                    <div class="text-danger small mt-2" id="dialogError"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="dialogOkBtn">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JavaScript (needed for the modal and the carousel) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Our own JavaScript -->
+    <script src="script.js"></script>
+
 </body>
+
 </html>
